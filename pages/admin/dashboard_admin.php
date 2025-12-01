@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once '../../config/Debug.php';
+    require_once 'show_items_dashboad.php';
     
     if(isset($_SESSION['id'])) {
         if($_SESSION['role'] == 'admin') {
@@ -28,7 +29,7 @@
         <style>
             body{
                 background-color: #f0f0f0c9;
-                font-family: poppins, 'Segoe UI' sans-serif;
+                font-family: 'Poppins', sans-serif;
             }
             .sidebar {
                 background-color: #1f2d3d;
@@ -125,7 +126,7 @@
             <div class="row">
                 <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
                     <div>
-                        <h4>ESPACE ADMIN</h4>
+                        <h5>ESPACE ADMIN</h5>
                         <a href="#" class="active">
                             <i class="fa-solid fa-gauge"></i>
                             Dashboard
@@ -161,15 +162,17 @@
                     </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-                    <h4 class="mb-5 fw-none">
+                    <h5 class="mb-5 fw-none">
                         <span class="text-primary fw-bold">Free-School</span> : Un système gestion des notes
-                    </h4>
+                    </h5>
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6 col-lg-3 d-flex">
                             <div class="card shadow-sm h-100 w-100">
                                 <div class="card-body">
                                     <h6 class="text-muted">Classes</h6>
-                                    <h2 class="poppins-black">10</h2>
+                                    <h2 class="poppins-black">
+                                        <?= $totalClass; ?>
+                                    </h2>
                                     <span class="badge bg-success">
                                         <i class="fa-solid fa-chalkboard me-1 fs-3"></i>
                                     </span>

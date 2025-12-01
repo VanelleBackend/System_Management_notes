@@ -3,7 +3,7 @@
 
     // insert to class
     if(isset($_POST['submit'])) {
-        if(!empty($_POST['name_class']) AND isset($_POST['level_class'])) {
+        if(!empty($_POST['name_class']) AND !empty($_POST['level_class'])) {
 
             $nameClass = htmlspecialchars($_POST['name_class']);
             $levelClass = htmlspecialchars($_POST['level_class']);

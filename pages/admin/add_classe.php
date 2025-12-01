@@ -29,7 +29,7 @@
         <style>
             body{
                 background-color: #f0f0f0c9;
-                font-family: poppins, 'Segoe UI' sans-serif;
+                font-family: 'Poppins', sans-serif;
             }
             .sidebar {
                 background-color: #1f2d3d;
@@ -115,7 +115,7 @@
             <div class="row">
                 <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
                     <div>
-                        <h4>ESPACE ADMIN</h4>
+                        <h5>ESPACE ADMIN</h5>
                         <a href="dashboard_admin.php">
                             <i class="fa-solid fa-gauge"></i>
                             Dashboard
@@ -153,14 +153,15 @@
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <h4 class="mb-5 fw-none">
+                            <h5 class="mb-5 fw-none">
                                 <span class="text-primary fw-bold">Free-School</span> : Un système gestion des notes
-                            </h4>
+                            </h5>
                         </div>
                         <div class="">
                             <i class="fa-solid fa-user fs-3" style="color: #1d1e20;"></i><span>Admin</span>
                         </div>
                     </div>
+                    <h4 class="mb-4 text-center text-decoration-underline fw-bolder">Gestion des classes</h4>
                      <!-- Nav Tabs -->
                     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -227,8 +228,8 @@
                                                     <td><?= $value['nom_classe'] ?></td>
                                                     <td><?= $value['niveau'] ?></td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-warning mx-2">Modifier</button>
-                                                        <button class="btn btn-sm btn-danger mx-2">Supprimer</button>
+                                                        <a class="btn btn-sm btn-warning mx-2">Modifier</a>
+                                                        <a class="btn btn-sm btn-danger mx-2" href="../../actions/classes/delete_classe.php?id=<?= $value['id_classe']; ?>">Supprimer</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

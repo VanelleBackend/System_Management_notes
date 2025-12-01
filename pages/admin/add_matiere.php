@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once '../../config/Debug.php';
+    require_once '../../actions/matieres/add_matiere_action.php';
     
     if(isset($_SESSION['id'])) {
         if($_SESSION['role'] == 'admin') {
@@ -28,7 +29,7 @@
         <style>
             body{
                 background-color: #f0f0f0c9;
-                font-family: poppins, 'Segoe UI' sans-serif;
+                font-family: 'Poppins', sans-serif;
             }
             .sidebar {
                 background-color: #1f2d3d;
@@ -114,7 +115,7 @@
             <div class="row">
                 <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
                     <div>
-                        <h4>ESPACE ADMIN</h4>
+                        <h5>ESPACE ADMIN</h5>
                         <a href="dashboard_admin.php">
                             <i class="fa-solid fa-gauge"></i>
                             Dashboard
@@ -150,9 +151,86 @@
                     </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-                    <h4 class="mb-5 fw-none">
+                    <h5 class="mb-5 fw-none">
                         <span class="text-primary fw-bold">Free-School</span> : Un système gestion des notes
-                    </h4>
+                    </h5>
+                    <h4 class="mb-4 text-center text-decoration-underline fw-bolder">Gestion des matières</h4>
+                     <!-- Nav Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="add-tab" data-bs-toggle="tab" data-bs-target="#add" type="button" role="tab">
+                            Ajouter une matière
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="list-tab" data-bs-toggle="tab" data-bs-target="#list" type="button" role="tab">
+                            Liste des matières
+                            </button>
+                        </li>
+                    </ul>
+                    <!-- Tab Contents -->
+                    <div class="tab-content">
+                        <!-- Onglet Ajouter -->
+                        <div class="tab-pane fade show active" id="add" role="tabpanel">
+                            <div class="p-4" style="max-width: 100%;">
+                                <form method="post" action="" class="bg-light w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
+                                    <?php 
+                                        if(isset($error_msg)){ 
+                                            echo '<div class="alert alert-danger" role="alert">'.$error_msg.'</div>'; 
+                                        }
+                                        elseif(isset($success_msg)) {
+                                            echo '<div class="alert alert-success" role="alert">'.$success_msg.'</div>';
+                                        }
+                                    ?> 
+                                    <div class="mb-4 mt-5">
+                                        <label for="name_matiere" class="form-label">Nom de la matière :</label>
+                                        <input type="name" class="form-control form-control-lg" id="name_matiere" aria-describedby="emailHelp" name="name_matiere">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="coef_matiere" class="form-label">Coefficient de la matière :</label>
+                                        <input type="number" class="form-control form-control-lg" id="coef_matiere" aria-describedby="emailHelp" name="coef_matiere">
+                                    </div>
+                                    <button type="submit" name="submit" class="btn btn-dark btn-lg mb-5">Ajouter</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Onglet Liste -->
+                        <div class="tab-pane fade" id="list" role="tabpanel">
+                            <div class="p-4">
+                                <h5 class="mb-3">Matières disponible dans chaque classe</h5>
+                                <table class="table table-bordered table-striped shadow-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nom</th>
+                                            <th>Coefficient</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <?php if(isset($listMatiere) AND !empty($listMatiere)):?>
+                                            <?php foreach($listMatiere as $value): ?>
+                                                <tr>
+                                                    <td><?= $value['id_matiere'] ?></td>
+                                                    <td><?= $value['nom_matiere'] ?></td>
+                                                    <td><?= $value['coefficient'] ?></td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-warning mx-2">Modifier</a>
+                                                        <a class="btn btn-sm btn-danger mx-2" href="../../actions/matieres/delete_matiere.php?id=<?= $value['id_matiere']; ?>">Supprimer</a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <tr>
+                                                <td colspan="4" class="text-danger text-center">Aucune classe *</td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </main>
             </div>
         </div>

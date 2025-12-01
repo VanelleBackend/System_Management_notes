@@ -28,7 +28,7 @@
         <style>
             body{
                 background-color: #f0f0f0c9;
-                font-family: poppins, 'Segoe UI' sans-serif;
+                font-family: 'Poppins', sans-serif;
             }
             .sidebar {
                 background-color: #1f2d3d;
@@ -96,7 +96,7 @@
                             Élèves
                     </a>
                     <a href="notes.php">
-                        <i class="fa-solid fa-pen-to-square""></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                             Notes
                     </a>
                     <a href="bulletins.php">
@@ -114,12 +114,12 @@
             <div class="row">
                 <nav class="col-md-3 col-lg-2 d-none d-md-block bg-dark sidebar">
                     <div>
-                        <h4>ESPACE ADMIN</h4>
+                        <h5>ESPACE ADMIN</h5>
                         <a href="dashboard_admin.php">
                             <i class="fa-solid fa-gauge"></i>
                             Dashboard
                         </a>
-                        <a href="#">
+                        <a href="add_classe.php">
                             <i class="fa-solid fa-chalkboard"></i>
                             Classes
                         </a>
@@ -150,9 +150,9 @@
                     </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-                    <h4 class="mb-5 fw-none">
+                    <h5 class="mb-5 fw-none">
                         <span class="text-primary fw-bold">Free-School</span> : Un système gestion des notes
-                    </h4>
+                    </h5>
                 </main>
             </div>
         </div>

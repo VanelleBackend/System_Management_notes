@@ -186,9 +186,15 @@
                                         <label for="name_matiere" class="form-label">Nom de la matière :</label>
                                         <input type="name" class="form-control form-control-lg" id="name_matiere" aria-describedby="emailHelp" name="name_matiere">
                                     </div>
-                                    <div class="mb-4">
-                                        <label for="coef_matiere" class="form-label">Coefficient de la matière :</label>
-                                        <input type="number" class="form-control form-control-lg" id="coef_matiere" aria-describedby="emailHelp" name="coef_matiere">
+                                    <div class="row">
+                                        <div class="col mb-4">
+                                            <label for="name_class" class="form-label">Nom de la classe :</label>
+                                            <input type="name" class="form-control form-control-lg" id="name_class" aria-describedby="emailHelp" name="name_class">
+                                        </div>
+                                        <div class="col mb-4">
+                                            <label for="coef_matiere" class="form-label">Coefficient :</label>
+                                            <input type="number" class="form-control form-control-lg" id="coef_matiere" aria-describedby="emailHelp" name="coef_matiere">
+                                        </div>
                                     </div>
                                     <button type="submit" name="submit" class="btn btn-dark btn-lg mb-5">Ajouter</button>
                                 </form>
@@ -203,6 +209,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Nom</th>
+                                            <th>Classe</th>
                                             <th>Coefficient</th>
                                             <th>Actions</th>
                                         </tr>
@@ -214,6 +221,7 @@
                                                 <tr>
                                                     <td><?= $value['id_matiere'] ?></td>
                                                     <td><?= $value['nom_matiere'] ?></td>
+                                                    <td><?= $value['classe'] ?></td>
                                                     <td><?= $value['coefficient'] ?></td>
                                                     <td>
                                                         <a class="btn btn-sm btn-warning mx-2">Modifier</a>

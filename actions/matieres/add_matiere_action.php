@@ -3,13 +3,14 @@
 
     // insert to class
     if(isset($_POST['submit'])) {
-        if(!empty($_POST['name_matiere']) AND !empty($_POST['coef_matiere'])) {
+        if(!empty($_POST['name_matiere']) AND !empty($_POST['coef_matiere']) AND !empty($_POST['name_class'])) {
 
             $nameMatiere = htmlspecialchars($_POST['name_matiere']);
+            $nameClasse = htmlspecialchars($_POST['name_class']);
             $coefMatiere = htmlspecialchars($_POST['coef_matiere']);
 
-            $query = $conn->prepare('INSERT INTO matieres (nom_matiere, coefficient) VALUES (?, ?)');
-            $query->execute(array($nameMatiere, $coefMatiere)); 
+            $query = $conn->prepare('INSERT INTO matieres (nom_matiere, classe, coefficient) VALUES (?, ?, ?)');
+            $query->execute(array($nameMatiere, $nameClasse, $coefMatiere)); 
 
             if($query){
                 $success_msg = "Matière ajouter avec succèss";

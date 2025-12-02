@@ -172,7 +172,7 @@
                         <!-- Onglet Ajouter -->
                         <div class="tab-pane fade show active" id="add" role="tabpanel">
                             <div class="p-4" style="max-width: 100%;">
-                                <form method="post" action="" class="bg-light w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
+                                <form method="post" action="" class="bg-white w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
                                     <?php 
                                         if(isset($error_msg)){ 
                                             echo '<div class="alert alert-danger" role="alert">'.$error_msg.'</div>'; 
@@ -184,21 +184,21 @@
                                     <div class="row g-3">
                                         <div class="col">
                                             <label for="nom" class="form-label">Nom :</label>
-                                            <input type="text" class="form-control form-control-lg form-control-lg" id="nom" aria-label="First name">
+                                            <input type="text" class="form-control form-control-lg form-control-lg" id="nom" autocomplete="off" aria-label="First name">
                                         </div>
                                         <div class="col">
                                             <label for="prenom" class="form-label">Prénom</label>
-                                            <input type="text" class="form-control form-control-lg" id="Prenom" aria-label="Last name">
+                                            <input type="text" class="form-control form-control-lg" id="Prenom" autocomplete="off" aria-label="Last name">
                                         </div>
                                     </div>
                                     <div class="row g-3 mt-3 mb-5">
                                         <div class="col">
                                             <label for="Email" class="form-label">Email :</label>
-                                            <input type="text" class="form-control form-control-lg" id="Email" aria-label="First name">
+                                            <input type="text" class="form-control form-control-lg" id="Email" autocomplete="off" aria-label="First name">
                                         </div>
                                         <div class="col">
                                             <label for="ppassword" class="form-label">Password :</label>
-                                            <input type="password" class="form-control form-control-lg" id="Password" aria-label="First name">
+                                            <input type="password" class="form-control form-control-lg" id="Password" autocomplete="off" aria-label="First name">
                                         </div>
                                     </div>
                                     <button type="submit" name="submit" class="btn btn-dark btn-lg mb-5">Ajouter</button>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once '../../config/Debug.php';
+    require_once '../../actions/users/add_enseignant_action.php';
     
     if(isset($_SESSION['id'])) {
         if($_SESSION['role'] == 'admin') {
@@ -172,7 +173,7 @@
                         <!-- Onglet Ajouter -->
                         <div class="tab-pane fade show active" id="add" role="tabpanel">
                             <div class="p-4" style="max-width: 100%;">
-                                <form method="post" action="" class="bg-light w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
+                                <form method="post" action="" class="bg-white w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
                                     <?php 
                                         if(isset($error_msg)){ 
                                             echo '<div class="alert alert-danger" role="alert">'.$error_msg.'</div>'; 
@@ -184,21 +185,21 @@
                                     <div class="row g-3">
                                         <div class="col">
                                             <label for="nom" class="form-label">Nom :</label>
-                                            <input type="text" class="form-control form-control-lg form-control-lg" id="nom" aria-label="First name">
+                                            <input type="text" class="form-control form-control-lg form-control-lg" id="nom" autocomplete="off" aria-label="First name" name="name">
                                         </div>
                                         <div class="col">
                                             <label for="prenom" class="form-label">Prénom</label>
-                                            <input type="text" class="form-control form-control-lg" id="Prenom" aria-label="Last name">
+                                            <input type="text" class="form-control form-control-lg" id="Prenom" autocomplete="off" aria-label="Last name" name="surname">
                                         </div>
                                     </div>
                                     <div class="row g-3 mt-3 mb-5">
                                         <div class="col">
                                             <label for="Email" class="form-label">Email :</label>
-                                            <input type="text" class="form-control form-control-lg" id="Email" aria-label="First name">
+                                            <input type="text" class="form-control form-control-lg" id="Email" autocomplete="off" aria-label="email" name="email">
                                         </div>
                                         <div class="col">
                                             <label for="ppassword" class="form-label">Password :</label>
-                                            <input type="password" class="form-control form-control-lg" id="Password" aria-label="First name">
+                                            <input type="password" class="form-control form-control-lg" id="Password" autocomplete="off" aria-label="password" name="password">
                                         </div>
                                     </div>
                                     <button type="submit" name="submit" class="btn btn-dark btn-lg mb-5">Ajouter</button>
@@ -208,33 +209,35 @@
                         <!-- Onglet Liste -->
                         <div class="tab-pane fade" id="list" role="tabpanel">
                             <div class="p-4">
-                                <h5 class="mb-3">Classes disponibles</h5>
+                                <h5 class="mb-3">Enseignants disponibles</h5>
                                 <table class="table table-bordered table-striped shadow-sm">
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Nom</th>
-                                            <th>Niveau</th>
+                                            <th>Prenom</th>
+                                            <th>Adresse email</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <?php if(isset($listClass) AND !empty($listClass)):?>
-                                            <?php foreach($listClass as $value): ?>
+                                        <?php if(isset($listEnseignant) AND !empty($listEnseignant)): $numEnseignant = 1; ?>
+                                            <?php foreach($listEnseignant as $value): ?>
                                                 <tr>
-                                                    <td><?= $value['id_classe'] ?></td>
-                                                    <td><?= $value['nom_classe'] ?></td>
-                                                    <td><?= $value['niveau'] ?></td>
+                                                    <td><?= $numEnseignant ?></td>
+                                                    <td><?= $value['nom'] ?></td>
+                                                    <td><?= $value['prenom'] ?></td>
+                                                    <td><?= $value['email']?></td>
                                                     <td>
                                                         <a class="btn btn-sm btn-warning mx-2">Modifier</a>
-                                                        <a class="btn btn-sm btn-danger mx-2" href="../../actions/classes/delete_classe.php?id=<?= $value['id_classe']; ?>">Supprimer</a>
+                                                        <a class="btn btn-sm btn-danger mx-2">Supprimer</a>
                                                     </td>
                                                 </tr>
-                                            <?php endforeach; ?>
+                                            <?php $numEnseignant++;  endforeach; ?>
                                         <?php else: ?>
                                             <tr>
-                                                <td colspan="4" class="text-danger text-center">Aucune classe *</td>
+                                                <td colspan="4" class="text-danger text-center">Aucun enseignant *</td>
                                             </tr>
                                         <?php endif; ?>
                                     </tbody>

@@ -180,7 +180,7 @@
                         <!-- Onglet Ajouter -->
                         <div class="tab-pane fade show active" id="add" role="tabpanel">
                             <div class="p-4" style="max-width: 100%;">
-                                <form method="post" action="" class="bg-light w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
+                                <form method="post" action="" class="bg-white w-75 p-5 mx-auto mt-5 shadow-lg rounded-3">
                                     <?php 
                                         if(isset($error_msg)){ 
                                             echo '<div class="alert alert-danger" role="alert">'.$error_msg.'</div>'; 
@@ -191,7 +191,7 @@
                                     ?> 
                                     <div class="mb-4 mt-5">
                                         <label for="name_classe" class="form-label">Nom de la classe :</label>
-                                        <input type="name" class="form-control form-control-lg" id="name_class" aria-describedby="emailHelp" name="name_class">
+                                        <input type="name" class="form-control form-control-lg" id="name_class" aria-describedby="emailHelp" name="name_class" autocomplete="off">
                                     </div>
                                     <div class="mb-4">
                                         <label for="level" class="form-label">Choississez le niveau :</label>
